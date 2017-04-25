@@ -376,6 +376,11 @@ public class JSONDecoder implements JSONConstants{
         else{
             Map<?,?> values = (Map<?,?>)data;
             Class<?> classType = getClass( (Map<?,?>)values, clazz );
+            
+            if(classType == null){
+            	return values;
+            }
+            
             MappingBean mb = MappingBean.getMapping( getClass( classType ) );
             Object instance = factory.getInstance( classType );
 
@@ -397,11 +402,20 @@ public class JSONDecoder implements JSONConstants{
     private Class<?> getClass( Map<?,?> mappedObj, Type classType ) throws ClassNotFoundException{
         if( classType == null ){
             String clazzName = (String) mappedObj.get( "class" );
+            if( clazzName != null ){
+                return Class.forName( clazzName, true,
+                        Thread.currentThread().getContextClassLoader() );
+            }
+            else
+            	return null;
+            
+            /*
             if( clazzName == null )
                 throw new JSONException( "undetermined class: not found \"class\"" );
             else
                 return Class.forName( clazzName, true,
                         Thread.currentThread().getContextClassLoader() );
+            */
         }
         else
             return getClass( classType );
