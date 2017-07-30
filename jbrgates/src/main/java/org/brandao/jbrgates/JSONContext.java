@@ -116,7 +116,7 @@ public interface JSONContext {
 
     /**
      * Decode a JSON object to specific type.
-     * @param value Json object
+	 * @param stream Stream.
      * @param type Type.
      * @return Object.
      * @throws JSONException Thrown if a problem occurs when decoding.
@@ -125,7 +125,7 @@ public interface JSONContext {
 
     /**
      * Decode a JSON object to specific type.
-     * @param value Json object
+	 * @param stream Stream.
      * @param type Type.
      * @return Object.
      * @throws JSONException Thrown if a problem occurs when decoding.
@@ -134,6 +134,7 @@ public interface JSONContext {
     
     /**
      * Decodes a JSON object in a specific collection type.
+	 * @param stream Stream.
      * @param collectionType Collection type.
      * @param entityType Entity type.
      * @return Collection.
