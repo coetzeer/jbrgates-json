@@ -400,6 +400,7 @@ public class JSONDecoder implements JSONConstants{
     }
 
     private Class<?> getClass( Map<?,?> mappedObj, Type classType ) throws ClassNotFoundException{
+    	/*
         if( classType == null ){
             String clazzName = (String) mappedObj.get( "class" );
             if( clazzName != null ){
@@ -408,17 +409,15 @@ public class JSONDecoder implements JSONConstants{
             }
             else
             	return null;
-            
-            /*
-            if( clazzName == null )
-                throw new JSONException( "undetermined class: not found \"class\"" );
-            else
-                return Class.forName( clazzName, true,
-                        Thread.currentThread().getContextClassLoader() );
-            */
         }
         else
+        */
+    	if(classType != null){
             return getClass( classType );
+    	}
+    	else{
+    		return null;
+    	}
     }
 
     private Object toValue( String value, Type type ){
