@@ -17,10 +17,6 @@
 
 package org.brandao.jbrgates;
 
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.Type;
-
 /**
  * Default json context.
  * 
