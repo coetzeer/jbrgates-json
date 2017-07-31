@@ -360,7 +360,16 @@ class JSONParsing implements JSONConstants{
         List<Object> obj = new ArrayList<Object>();
 
         if( START_ARRAY_STR == next(true) ){
-                Object value = value( clazz );
+        		char endArray = next(true);
+        		
+        		if(endArray == END_ARRAY_STR){
+        			return null;
+        		}
+        		else{
+        			back();
+        		}
+        		
+                Object value = value(clazz);
                 obj.add( value );
                 while( SEPARATOR_STR == next(true) ){
                     value = value( clazz );
